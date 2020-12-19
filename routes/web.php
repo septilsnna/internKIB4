@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\CollegesController;
+use App\Http\Controllers\CompetitionsController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ScholarshipsController;
 use App\Http\Controllers\VacanciesController;
@@ -41,13 +42,19 @@ Route::get('/admin/add_events', [EventsController::class, 'store']);            
 Route::get('/admin/update_events/{id}', [EventsController::class, 'update']);               // done
 Route::get('/admin/delete_events/{id}', [EventsController::class, 'destroy']);              // done
 
-Route::get('/admin/manage_scholarships', [ScholarshipsController::class, 'index']);
-Route::get('/admin/add_scholarships', [ScholarshipsController::class, 'store']);
-Route::get('/admin/update_scholarships/{id}', [ScholarshipsController::class, 'update']);
+Route::get('/admin/manage_scholarships', [ScholarshipsController::class, 'index']);         // done
+Route::get('/admin/add_scholarships', [ScholarshipsController::class, 'store']);            // done
+Route::get('/admin/update_scholarships/{id}', [ScholarshipsController::class, 'update']);   // done
+Route::get('/admin/delete_scholarships/{id}', [ScholarshipsController::class, 'destroy']);  // done
 
-Route::get('/admin/manage_competitions', [VacanciesController::class, 'index']);
-Route::get('/admin/add_competitions', [VacanciesController::class, 'store']);
-Route::get('/admin/update_competitions/{id}', [VacanciesController::class, 'update']);
+Route::get('/admin/manage_competitions', [CompetitionsController::class, 'index']);         // done
+Route::get('/admin/add_competitions', [CompetitionsController::class, 'store']);            // done
+Route::get('/admin/update_competitions/{id}', [CompetitionsController::class, 'update']);   // done
+Route::get('/admin/delete_competitions/{id}', [CompetitionsController::class, 'destroy']);  // done
+
+Route::get('/admin/manage_vacancies', [VacanciesController::class, 'index']);
+Route::get('/admin/add_vacancies', [VacanciesController::class, 'store']);
+Route::get('/admin/update_vacancies/{id}', [VacanciesController::class, 'update']);
 
 Route::get('/admin/manage_blogs', [BlogsController::class, 'index']);
 Route::get('/admin/add_blogs', [BlogsController::class, 'store']);

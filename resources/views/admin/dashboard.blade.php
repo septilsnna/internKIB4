@@ -82,7 +82,7 @@
                             <h4>Beasiswa</h4>
                         </div>
                         <div class="col-md-3">
-                            <a href="" class="btn px-4 py-2"
+                            <a href="/admin/manage_scholarships" class="btn px-4 py-2"
                                 style="background-color: #163254; color: #eef5f6">Manage</a>
                         </div>
                     </div>
@@ -95,11 +95,11 @@
                     <div class="row align-items-center">
                         <div class="col-md">
                             <img src="" style="max-width: 90%;" alt="">
-                            <h2 style="font-size: 32px;font-weight: bold;">102</h2>
+                            <h2 style="font-size: 32px;font-weight: bold;">{{ $jml_lomba }}</h2>
                             <h4>Lomba</h4>
                         </div>
                         <div class="col-md-3">
-                            <a href="" class="btn px-4 py-2"
+                            <a href="/admin/manage_competitions" class="btn px-4 py-2"
                                 style="background-color: #163254; color: #eef5f6">Manage</a>
                         </div>
                     </div>

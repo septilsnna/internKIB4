@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Scholarship;
 use Illuminate\Http\Request;
 
 class ScholarshipsController extends Controller
@@ -13,7 +14,9 @@ class ScholarshipsController extends Controller
      */
     public function index()
     {
-        //
+        $scholars = Scholarship::all();
+
+        return view('admin.manage_scholarships', compact('scholars'));
     }
 
     /**
@@ -34,7 +37,16 @@ class ScholarshipsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $scholars = new Scholarship;
+        $scholars->nama_bea = $request->nama_bea;
+        $scholars->penyelenggara_bea = $request->penyelenggara_bea;
+        $scholars->batas_submit = $request->batas_submit;
+        $scholars->deskripsi = $request->deskripsi;
+        $scholars->pamflet = $request->pamflet;
+
+        $scholars->save();
+
+        return redirect('/admin/manage_scholarships');
     }
 
     /**
@@ -68,7 +80,17 @@ class ScholarshipsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            "nama_bea" => $request->nama_bea,
+            "penyelenggara_bea" => $request->penyelenggara_bea,
+            "batas_submit" => $request->batas_submit,
+            "deskripsi" => $request->deskripsi,
+            "pamflet" => $request->pamflet,
+        ];
+
+        Scholarship::where('id', $id)->update($data);
+
+        return redirect('/admin/manage_scholarships');
     }
 
     /**
@@ -79,6 +101,8 @@ class ScholarshipsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Scholarship::where('id', $id)->delete();
+
+        return redirect('/admin/manage_scholarships');
     }
 }

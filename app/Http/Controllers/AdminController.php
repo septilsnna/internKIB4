@@ -9,6 +9,7 @@ use App\Models\Scholarship;
 // use App\Models\Competition;
 use App\Models\Vacancy;
 use App\Models\Blog;
+use App\Models\Competition;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,7 @@ class AdminController extends Controller
         $jml_kampus = count(College::all());
         $jml_event = count(Event::all());
         $jml_beasiswa = count(Scholarship::all());
-        // $jml_lomba = count(College::all());
+        $jml_lomba = count(Competition::all());
         $jml_loker = count(Vacancy::all());
         $jml_blog = count(Blog::all());
 
@@ -25,6 +26,7 @@ class AdminController extends Controller
             'jml_kampus' => $jml_kampus,
             'jml_event' => $jml_event,
             'jml_beasiswa' => $jml_beasiswa,
+            'jml_lomba' => $jml_lomba,
             'jml_loker' => $jml_loker,
             'jml_blog' => $jml_blog,
         ];

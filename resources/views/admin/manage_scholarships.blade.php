@@ -1,90 +1,65 @@
 @extends('layout/main')
 
-@section('title', 'Daftar Kampus | Kampus Indonesia')
+@section('title', 'Manage Scholarships | Kampus Indonesia')
 
 @section('container')
 <div class="container my-3" style="font-family: 'Quicksand', sans-serif; color: #163254;">
     <div class="row">
         <div class="col">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#collegesAddModal">
-                Tambah Data Kampus
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#scholarshipsAddModal">
+                Tambah Data Beasiswa
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="collegesAddModal" tabindex="-1" role="dialog"
-                aria-labelledby="collegesAddModalTitle" aria-hidden="true">
+            <div class="modal fade" id="scholarshipsAddModal" tabindex="-1" role="dialog"
+                aria-labelledby="scholarshipsAddModalTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="collegesAddModalTitle">Tambah Data Kampus</h5>
+                            <h5 class="modal-title" id="scholarshipsAddModalTitle">Tambah Data Beasiswa</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="/colleges/add">
+                            <form action="/admin/add_scholarships">
                                 @csrf
                                 <div class="form-group row align-items-center">
-                                    <label for="nama_univ" class="col-sm-2 col-form-label">Nama Kampus</label>
+                                    <label for="nama_bea" class="col-sm-2 col-form-label">Nama Beasiswa</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nama_univ" name="nama_univ">
+                                        <input type="text" class="form-control" id="nama_bea" name="nama_bea"></input>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <label for="jenis_univ" class="col-sm-2 col-form-label">Jenis Kampus</label>
+                                    <label for="penyelenggara_bea" class="col-sm-2 col-form-label">Penyelenggara</label>
                                     <div class="col-sm-10">
-                                        <select id="jenis_univ" name="jenis_univ" class="form-control">
-                                            <option selected>Universitas</option>
-                                            <option>Politeknik</option>
-                                            <option>Institut</option>
-                                            <option>Sekolah Tinggi</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="penyelenggara_bea"
+                                            name="penyelenggara_bea"></input>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <label for="status_univ" class="col-sm-2 col-form-label">Status Kampus</label>
+                                    <label for="batas_submit" class="col-sm-2 col-form-label">Batas Pengumpulan</label>
                                     <div class="col-sm-10">
-                                        <select id="status_univ" name="status_univ" class="form-control">
-                                            <option selected>Negeri</option>
-                                            <option>Swasta</option>
-                                            <option>Kedinasan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label for="akre_univ" class="col-sm-2 col-form-label">Akreditasi Kampus</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="akre_univ" name="akre_univ">
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label for="prov_univ" class="col-sm-2 col-form-label">Provinsi</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="prov_univ" name="prov_univ">
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label for="jml_fak" class="col-sm-2 col-form-label">Jumlah Fakultas</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="jml_fak" name="jml_fak">
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label for="jml_prodi" class="col-sm-2 col-form-label">Jumlah Prodi</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="jml_prodi" name="jml_prodi">
+                                        <input type="date" class="form-control" id="batas_submit"
+                                            name="batas_submit"></input>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
+                                        <input type="text" class="form-control" id="deskripsi" name="deskripsi"></input>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center">
+                                    <label for="pamflet" class="col-sm-2 col-form-label">Pamflet</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="pamflet" name="pamflet"></input>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button submit" class="btn btn-primary">Save changes</button>
+                                    <button type="button submit" class="btn btn-success">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -99,128 +74,140 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Nama Kampus</th>
-                        <th scope="col">Jenis Kampus</th>
-                        <th scope="col">Status Kampus</th>
-                        <th scope="col">Akreditasi</th>
-                        <th scope="col">Lokasi Kampus</th>
-                        <th scope="col">Jumlah Fakultas</th>
-                        <th scope="col">Jumlah Program Studi</th>
+                        <th scope="col">Nama Beasiswa</th>
+                        <th scope="col">Penyelenggara</th>
+                        <th scope="col">Batas Pengumpulan</th>
+                        <th scope="col">Deskripsi</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($kampus as $d)
+                    @foreach($scholars as $d)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $d->nama_univ}}</td>
-                        <td>{{ $d->jenis_univ}}</td>
-                        <td>{{ $d->status_univ}}</td>
-                        <td>{{ $d->akre_univ}}</td>
-                        <td>{{ $d->prov_univ}}</td>
-                        <td>{{ $d->jml_fak}}</td>
-                        <td>{{ $d->jml_prodi}}</td>
+                        <td>{{ $d->nama_bea}}</td>
+                        <td>{{ $d->penyelenggara_bea}}</td>
+                        <td>{{ $d->batas_submit}}</td>
+                        <td>{{ $d->deskripsi}}</td>
                         <td>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#collegesEditModal{{ $d->id }}">
-                                Ubah
-                            </button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#scholarshipsEditModal{{ $d->id }}">
+                                        Ubah
+                                    </button>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="collegesEditModal{{ $d->id }}" tabindex="-1" role="dialog"
-                                aria-labelledby="collegesEditModal{{ $d->id }}Title" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="collegesEditModal{{ $d->id }}Title">Ubah Data
-                                                {{ $d->nama_univ }}</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="scholarshipsEditModal{{ $d->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="scholarshipsEditModal{{ $d->id }}Title"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="scholarshipsEditModal{{ $d->id }}Title">
+                                                        Ubah
+                                                        Data
+                                                        {{ $d->nama_bea }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/admin/update_scholarships/{{ $d->id}}">
+                                                        @csrf
+                                                        <div class="form-group row align-items-center">
+                                                            <label for="nama_bea" class="col-sm-2 col-form-label">Nama
+                                                                Beasiswa</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="nama_bea"
+                                                                    name="nama_bea" value="{{ $d->nama_bea}}"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row align-items-center">
+                                                            <label for="penyelenggara_bea"
+                                                                class="col-sm-2 col-form-label">Penyelenggara</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control"
+                                                                    id="penyelenggara_bea" name="penyelenggara_bea"
+                                                                    value="{{ $d->penyelenggara_bea}}"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row align-items-center">
+                                                            <label for="batas_submit"
+                                                                class="col-sm-2 col-form-label">Batas Submit</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="date" class="form-control"
+                                                                    id="batas_submit" name="batas_submit"
+                                                                    value="{{ $d->batas_submit}}"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row align-items-center">
+                                                            <label for="deskripsi"
+                                                                class="col-sm-2 col-form-label">Deskripsi</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="deskripsi"
+                                                                    name="deskripsi" value="{{ $d->deskripsi}}"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row align-items-center">
+                                                            <label for="pamflet"
+                                                                class="col-sm-2 col-form-label">Pamflet</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="pamflet"
+                                                                    name="pamflet" value="{{ $d->pamflet}}"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="button submit"
+                                                                class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <form action="/colleges/edit">
-                                                @csrf
-                                                <div class="form-group row align-items-center">
-                                                    <label for="nama_univ" class="col-sm-2 col-form-label">Nama
-                                                        Kampus</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="nama_univ"
-                                                            name="nama_univ" value="{{ $d->nama_univ }}">
-                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                        data-target="#scholarshipsDeleteModal{{ $d->id }}">
+                                        Hapus
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="scholarshipsDeleteModal{{ $d->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="scholarshipsDeleteModal{{ $d->id }}Title"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"
+                                                        id="scholarshipsDeleteModal{{ $d->id }}Title">
+                                                        Hapus
+                                                        Data
+                                                        {{ $d->nama_bea }}?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
                                                 </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label for="jenis_univ" class="col-sm-2 col-form-label">Jenis
-                                                        Kampus</label>
-                                                    <div class="col-sm-10">
-                                                        <select id="jenis_univ" name="jenis_univ" class="form-control">
-                                                            <option>Universitas</option>
-                                                            <option>Politeknik</option>
-                                                            <option>Institut</option>
-                                                            <option>Sekolah Tinggi</option>
-                                                        </select>
-                                                    </div>
+                                                <div class="modal-body">
+                                                    <form action="/admin/delete_scholarships/{{ $d->id}}">
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="button submit"
+                                                                class="btn btn-danger">Delete</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label for="status_univ" class="col-sm-2 col-form-label">Status
-                                                        Kampus</label>
-                                                    <div class="col-sm-10">
-                                                        <select id="status_univ" name="status_univ" class="form-control"
-                                                            aria-selected="{{ $d->status_univ }}">
-                                                            <option>Negeri</option>
-                                                            <option>Swasta</option>
-                                                            <option>Kedinasan</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label for="akre_univ" class="col-sm-2 col-form-label">Akreditasi
-                                                        Kampus</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="akre_univ"
-                                                            name="akre_univ" value="{{ $d->akre_univ }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label for="prov_univ"
-                                                        class="col-sm-2 col-form-label">Provinsi</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="prov_univ"
-                                                            name="prov_univ" value="{{ $d->prov_univ }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label for="jml_fak" class="col-sm-2 col-form-label">Jumlah
-                                                        Fakultas</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="number" class="form-control" id="jml_fak"
-                                                            name="jml_fak" value="{{ $d->jml_fak }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label for="jml_prodi" class="col-sm-2 col-form-label">Jumlah
-                                                        Prodi</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="number" class="form-control" id="jml_prodi"
-                                                            name="jml_prodi" value="{{ $d->jml_prodi }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label for="deskripsi"
-                                                        class="col-sm-2 col-form-label">Deskripsi</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="deskripsi"
-                                                            name="deskripsi" value="{{ $d->deskripsi }}">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="button submit" class="btn btn-primary">Save
-                                                        changes</button>
-                                                </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
