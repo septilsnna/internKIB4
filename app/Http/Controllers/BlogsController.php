@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
@@ -13,7 +14,9 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        //
+        $blogs = Blog::all();
+
+        return view('admin.manage_blogs', compact('blogs'));
     }
 
     /**
@@ -34,7 +37,14 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $blogs = new Blog;
+        $blogs->judul_blog = $request->judul_blog;
+        $blogs->isi_blog = $request->isi_blog;
+        $blogs->gambar = $request->gambar;
+
+        $blogs->save();
+
+        return redirect('/admin/manage_blogs');
     }
 
     /**
@@ -68,7 +78,15 @@ class BlogsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            "judul_blog" => $request->judul_blog,
+            "isi_blog" => $request->isi_blog,
+            "gambar" => $request->gambar,
+        ];
+
+        Blog::where('id', $id)->update($data);
+
+        return redirect('/admin/manage_blogs');
     }
 
     /**
@@ -79,6 +97,8 @@ class BlogsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Blog::where('id', $id)->delete();
+
+        return redirect('/admin/manage_blogs');
     }
 }

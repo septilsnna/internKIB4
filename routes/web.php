@@ -57,6 +57,7 @@ Route::get('/admin/add_vacancies', [VacanciesController::class, 'store']);      
 Route::get('/admin/update_vacancies/{id}', [VacanciesController::class, 'update']);         // done
 Route::get('/admin/delete_vacancies/{id}', [VacanciesController::class, 'destroy']);        // done
 
-Route::get('/admin/manage_blogs', [BlogsController::class, 'index']);
-Route::get('/admin/add_blogs', [BlogsController::class, 'store']);
-Route::get('/admin/update_blogs/{id}', [BlogsController::class, 'update']);
+Route::get('/admin/manage_blogs', [BlogsController::class, 'index']);                       // done
+Route::get('/admin/add_blogs', [BlogsController::class, 'store']);                          // done
+Route::get('/admin/update_blogs/{id}', [BlogsController::class, 'update']);                 // done
+Route::get('/admin/delete_blogs/{id}', [BlogsController::class, 'destroy']);                // done
