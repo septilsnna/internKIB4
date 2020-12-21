@@ -59,8 +59,8 @@ class UsersController extends Controller
      */
     public function show(Request $request)
     {
-        if ($request->email == 'akuadmin@iya.com' && $request->password == '123456789') {
-            session(['auth' => 'akuadmin@iya.com']);
+        if ($request->email == 'akangironman@marvel.com' && $request->password == '123456789') {
+            session(['auth' => 'akangironman@marvel.com']);
             return redirect('/admin/dashboard');
         } else {
             $users = User::where('email', $request->email)->get();

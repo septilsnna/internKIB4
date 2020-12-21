@@ -10,6 +10,7 @@ use App\Models\Scholarship;
 use App\Models\Vacancy;
 use App\Models\Blog;
 use App\Models\Competition;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -22,6 +23,8 @@ class AdminController extends Controller
         $jml_loker = count(Vacancy::all());
         $jml_blog = count(Blog::all());
 
+        $users = User::all();
+
         $data = [
             'jml_kampus' => $jml_kampus,
             'jml_event' => $jml_event,
@@ -29,6 +32,7 @@ class AdminController extends Controller
             'jml_lomba' => $jml_lomba,
             'jml_loker' => $jml_loker,
             'jml_blog' => $jml_blog,
+            'users' => $users
         ];
 
         return view('admin/dashboard', $data);
