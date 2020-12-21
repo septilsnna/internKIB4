@@ -4,7 +4,15 @@
 
 @section('container')
 <div class="container my-3 mb-5" style="font-size: 18px; font-family: 'Quicksand', sans-serif; color: #163254;">
-    <h2>Statistics</h2>
+    <div class="row justify-content-between">
+        <div class="col-md-4">
+            <h2>Statistics</h2>
+        </div>
+        <div class="col-md-2">
+            <a href="/logout" class="btn px-4"
+                style="background-color: #163254; color: #eef5f6; border-radius: 20px">Logout</a>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-6 my-3">
             <div class="card bg-light shadow">

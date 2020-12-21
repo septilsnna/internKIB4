@@ -1,4 +1,4 @@
-@extends('layout/user_mode')
+@extends('layout/main')
 
 @section('title', 'Kampus Indonesia')
 

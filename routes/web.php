@@ -9,6 +9,7 @@ use App\Http\Controllers\CollegesController;
 use App\Http\Controllers\CompetitionsController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ScholarshipsController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VacanciesController;
 
 /*
@@ -26,12 +27,27 @@ use App\Http\Controllers\VacanciesController;
 //     return view('welcome');
 // });
 
-Route::get('/', [AdminController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/colleges', [CollegesController::class, 'index']);
 
+// route for login
+Route::get('/login', [HomeController::class, 'login']);
+Route::get('/login/auth', [UsersController::class, 'show']);
 
-// admin
+// route for logout
+Route::get('/logout', [HomeController::class, 'logout']);
+
+// route for register
+Route::get('/register', [HomeController::class, 'register']);
+Route::get('/user/create', [UsersController::class, 'store']);
+
+// route for user profile
+Route::get('/profile', [HomeController::class, 'profile']);
+
+// route for admin
+Route::get('/admin/dashboard', [AdminController::class, 'index']);
+
 Route::get('/admin/manage_colleges', [CollegesController::class, 'index']);                 // done
 Route::get('/admin/add_colleges', [CollegesController::class, 'store']);                    // done
 Route::get('/admin/update_colleges/{id}', [CollegesController::class, 'update']);           // done

@@ -54,13 +54,9 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <div class="navbar-nav">
-                    <a class="nav-link px-4 my-1" role="button"
-                        style="text-align: center; background-color:#163254; color:#eef5f6; border-radius:20px"
-                        href="/login">Masuk</a>
+                    <a class="nav-link px-4 my-1" role="button" style="text-align: center; color:#163254;"
+                        href="/profile">Halo, {{ $nama }}!</a>
                     <div class="divider" style="width:10px; height:auto; display:inline-block;"></div>
-                    <a class="nav-link px-4 border" role="button"
-                        style="border-radius:20px; border:#163254; color:#163254; display: inline-block;"
-                        href="/register">Daftar</a>
                 </div>
             </div>
         </nav>
