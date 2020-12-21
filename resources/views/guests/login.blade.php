@@ -12,13 +12,19 @@
                     <form action="/login/auth">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Masukkan email kamu">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                name="email" placeholder="Masukkan email kamu" value="{{ old('email') }}">
+                            @error('email')
+                            <small style=" color: red;">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Masukkan password">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                id="password" name="password" placeholder="Masukkan password">
+                            @if (session('invalid_login'))
+                            <small style="color: red;">{{ session('invalid_login') }}</small>
+                            @endif
                         </div>
                         <div class="form-group row justify-content-center">
                             <button type="submit" class="btn px-5"

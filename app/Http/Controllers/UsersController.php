@@ -37,11 +37,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        // store old value
+        $name = $request->old('name');
+        $email = $request->old('email');
+
+        // form validation        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:8',
+            'password_confirm' => 'required|same:password|min:8',
+        ]);
+
+        // create to users database
         $users = new User;
         $users->name = $request->name;
         $users->email = $request->email;
         $users->password = $request->password;
-
         $users->save();
 
         $name = explode(" ", $request->name);
@@ -59,24 +71,38 @@ class UsersController extends Controller
      */
     public function show(Request $request)
     {
-        if ($request->email == 'akangironman@marvel.com' && $request->password == '123456789') {
-            session(['auth' => 'akangironman@marvel.com']);
-            return redirect('/admin/dashboard');
+        // store old value
+        $email = $request->old('email');
+
+        // form validation        
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        if ($request->email == 'akangironman@marvel.com') {
+            if ($request->password == '123456789') {
+                session(['auth' => 'akangironman@marvel.com']);
+                return redirect('/admin/dashboard');
+            } else {
+                session()->flash('invalid_login', 'Admin tidak terdaftar, harap periksa kembali akun Anda');
+                return back()->withInput();
+            }
         } else {
             $users = User::where('email', $request->email)->get();
-            if (!$users) {
-                session(['invalid_pass' => 'Pengguna tidak terdaftar, harap periksa kembali email Anda'])->flash();
-                return redirect('/login');
-            } else {
+            if ($users) {
                 if ($request->password != $users[0]->password) {
-                    session(['invalid_pass' => 'Password tidak sesuai, harap periksa kembali password Anda'])->flash();
-                    return redirect('/login');
+                    session()->flash('invalid_login', 'Password tidak sesuai, harap periksa kembali password Anda');
+                    return back()->withInput();
                 } else {
                     $name = explode(" ", $users[0]->name);
                     session(['auth' => $users[0]->email]);
                     session(['name' => $name[0]]);
                     return redirect('/');
                 }
+            } else {
+                session()->flash('invalid_login', 'Pengguna tidak terdaftar, harap periksa kembali email Anda');
+                return back()->withInput();
             }
         }
     }

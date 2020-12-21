@@ -12,23 +12,36 @@
                     <form action="/user/create">
                         <div class="form-group">
                             <label for="name">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                placeholder="Masukkan nama kamu">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                                name="name" placeholder="Masukkan nama kamu" value="{{ old('name') }}">
+                            @error('name')
+                            <small style="color: red;">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Masukkan email kamu">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                name="email" placeholder="Masukkan email kamu" value="{{ old('email') }}">
+                            @error('email')
+                            <small style=" color: red;">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Masukkan password">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                id="password" name="password" placeholder="Masukkan password">
+                            @error('password')
+                            <small style="color: red;">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password_confirm">Confirmasi Password</label>
-                            <input type="password" class="form-control" id="password_confirm" name="password_confirm"
+                            <input type="password" class="form-control @error('password_confirm') is-invalid @enderror"
+                                id="password_confirm" name="password_confirm"
                                 placeholder="Masukkan password konfirmasi">
+                            @error('password_confirm')
+                            <small style="color: red;">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group row justify-content-center">
                             <button type="submit" class="btn px-5"
