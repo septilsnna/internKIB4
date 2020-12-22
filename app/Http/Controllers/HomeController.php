@@ -10,14 +10,21 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $kampus = College::all();
+        $data = [
+            'kampus' => College::where('akre_univ', 'A')->take(3)->get(),
+            'jml_kampus' => count(College::all())
+        ];
 
-        if (session('auth')) {
-            $nama_user = session('name');
-            return view('users/home', ['kampus' => $kampus, 'nama' => $nama_user]);
+        if (session('auth') == 'akangironman@marvel.com') {
+            return redirect('/admin/dashboard');
         }
 
-        return view('guests/home', ['kampus' => $kampus]);
+        if (session('auth')) {
+            $data['nama_user'] = session('name');
+            return view('users/home', $data);
+        }
+
+        return view('guests/home', $data);
     }
 
     public function login()

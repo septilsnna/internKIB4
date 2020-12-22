@@ -32,12 +32,12 @@
                     <div class="row">
                         <div class="col-md">
                             <img src="" style="max-width: 90%;" alt="">
-                            <h2 style="font-size: 32px;font-weight: bold;">1024</h2>
+                            <h2 style="font-size: 32px;font-weight: bold;">{{ $jml_kampus }}</h2>
                             <p>Jumlah Kampus<br>yang Terdata Saat Ini</p>
                         </div>
                         <div class="col-md">
                             <img src="" style="max-width: 90%;" alt="">
-                            <h2 style="font-size: 32px;font-weight: bold;">113</h2>
+                            <h2 style="font-size: 32px;font-weight: bold;">{{ $jml_kampus }}</h2>
                             <p>Jumlah Kampus<br>yang Terdaftar di Pintara</p>
                         </div>
                     </div>

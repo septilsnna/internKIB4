@@ -1,4 +1,4 @@
-@extends('layout/main')
+@extends('layout/admin_mode')
 
 @section('title', 'Manage Colleges | Kampus Indonesia')
 
@@ -6,10 +6,14 @@
 <div class="container my-3" style="font-family: 'Quicksand', sans-serif; color: #163254;">
     <div class="row">
         <div class="col">
+            <a href="/admin/dashboard" class="btn">Kembali ke Dashboard</a>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#collegesAddModal">
                 Tambah Data Kampus
             </button>
+            @if (session('invalid_create'))
+            <small style="color: red;">{{ session('invalid_create') }}</small>
+            @endif
 
             <!-- Modal -->
             <div class="modal fade" id="collegesAddModal" tabindex="-1" role="dialog"
@@ -23,12 +27,16 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="/admin/add_colleges">
+                            <form action="/admin/add_colleges" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row align-items-center">
                                     <label for="nama_univ" class="col-sm-2 col-form-label">Nama Kampus</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nama_univ" name="nama_univ">
+                                        <input type="text" class="form-control @error('nama_univ') is-invalid @enderror"
+                                            id="nama_univ" name="nama_univ" value="{{ old('nama_univ') }}">
+                                        @error('nama_univ')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
@@ -55,31 +63,62 @@
                                 <div class="form-group row align-items-center">
                                     <label for="akre_univ" class="col-sm-2 col-form-label">Akreditasi Kampus</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="akre_univ" name="akre_univ">
+                                        <input type="text" class="form-control @error('akre_univ') is-invalid @enderror"
+                                            id="akre_univ" name="akre_univ" value="{{ old('akre_univ') }}">
+                                        @error('akre_univ')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="prov_univ" class="col-sm-2 col-form-label">Provinsi</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="prov_univ" name="prov_univ">
+                                        <input type="text" class="form-control @error('prov_univ') is-invalid @enderror"
+                                            id="prov_univ" name="prov_univ" value="{{ old('prov_univ') }}">
+                                        @error('prov_univ')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="jml_fak" class="col-sm-2 col-form-label">Jumlah Fakultas</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="jml_fak" name="jml_fak">
+                                        <input type="number" class="form-control @error('jml_fak') is-invalid @enderror"
+                                            id="jml_fak" name="jml_fak" value="{{ old('jml_fak') }}">
+                                        @error('jml_fak')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="jml_prodi" class="col-sm-2 col-form-label">Jumlah Prodi</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="jml_prodi" name="jml_prodi">
+                                        <input type="number"
+                                            class="form-control @error('jml_prodi') is-invalid @enderror" id="jml_prodi"
+                                            name="jml_prodi" value="{{ old('jml_prodi') }}">
+                                        @error('jml_prodi')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
+                                        <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
+                                            id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}">
+                                        @error('deskripsi')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center">
+                                    <label for="gambar" class="col-sm-2 col-form-label">Logo</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control @error('gambar') is-invalid @enderror"
+                                            id="gambar" name="gambar">
+                                        @error('gambar')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="modal-footer">

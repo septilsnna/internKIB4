@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\College;
 use App\Models\Event;
 use App\Models\Scholarship;
-// use App\Models\Competition;
 use App\Models\Vacancy;
 use App\Models\Blog;
 use App\Models\Competition;
@@ -16,6 +14,10 @@ class AdminController extends Controller
 {
     public function index()
     {
+        if (session('auth') != 'akangironman@marvel.com') {
+            return redirect('/');
+        }
+
         $jml_kampus = count(College::all());
         $jml_event = count(Event::all());
         $jml_beasiswa = count(Scholarship::all());

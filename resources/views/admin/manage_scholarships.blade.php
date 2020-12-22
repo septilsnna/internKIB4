@@ -1,4 +1,4 @@
-@extends('layout/main')
+@extends('layout/admin_mode')
 
 @section('title', 'Manage Scholarships | Kampus Indonesia')
 
@@ -6,6 +6,7 @@
 <div class="container my-3" style="font-family: 'Quicksand', sans-serif; color: #163254;">
     <div class="row">
         <div class="col">
+            <a href="/admin/dashboard" class="btn">Kembali ke Dashboard</a>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#scholarshipsAddModal">
                 Tambah Data Beasiswa

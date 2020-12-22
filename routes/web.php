@@ -49,7 +49,7 @@ Route::get('/profile', [HomeController::class, 'profile']);
 Route::get('/admin/dashboard', [AdminController::class, 'index']);
 
 Route::get('/admin/manage_colleges', [CollegesController::class, 'index']);                 // done
-Route::get('/admin/add_colleges', [CollegesController::class, 'store']);                    // done
+Route::post('/admin/add_colleges', [CollegesController::class, 'store']);                    // done
 Route::get('/admin/update_colleges/{id}', [CollegesController::class, 'update']);           // done
 Route::get('/admin/delete_colleges/{id}', [CollegesController::class, 'destroy']);          // done
 
