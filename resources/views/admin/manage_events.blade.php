@@ -24,12 +24,16 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="/admin/add_events">
+                            <form action="/admin/add_events" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row align-items-center">
                                     <label for="judul_ev" class="col-sm-2 col-form-label">Judul Acara</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="judul_ev" name="judul_ev">
+                                        <input type="text" class="form-control @error('judul_ev') is-invalid @enderror"
+                                            id="judul_ev" name="judul_ev" value="{{ old('judul_ev') }}">
+                                        @error('judul_ev')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
@@ -46,37 +50,63 @@
                                 <div class="form-group row align-items-center">
                                     <label for="tanggal_ev" class="col-sm-2 col-form-label">Tanggal</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="tanggal_ev" name="tanggal_ev">
+                                        <input type="date"
+                                            class="form-control @error('tanggal_ev') is-invalid @enderror"
+                                            id="tanggal_ev" name="tanggal_ev" value="{{ old('tanggal_ev') }}">
+                                        @error('tanggal_ev')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="waktu_ev" class="col-sm-2 col-form-label">Waktu</label>
                                     <div class="col-sm-10">
-                                        <input type="time" class="form-control" id="waktu_ev" name="waktu_ev">
+                                        <input type="time" class="form-control @error('waktu_ev') is-invalid @enderror"
+                                            id="waktu_ev" name="waktu_ev" value="{{ old('waktu_ev') }}">
+                                        @error('waktu_ev')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="lokasi_ev" class="col-sm-2 col-form-label">Lokasi</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="lokasi_ev" name="lokasi_ev">
+                                        <input type="text" class="form-control @error('lokasi_ev') is-invalid @enderror"
+                                            id="lokasi_ev" name="lokasi_ev" value="{{ old('lokasi_ev') }}">
+                                        @error('lokasi_ev')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="biaya_ev" class="col-sm-2 col-form-label">Biaya</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="biaya_ev" name="biaya_ev">
+                                        <input type="number"
+                                            class="form-control @error('biaya_ev') is-invalid @enderror" id="biaya_ev"
+                                            name="biaya_ev" value="{{ old('biaya_ev') }}">
+                                        @error('biaya_ev')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
+                                        <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
+                                            id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}">
+                                        @error('deskripsi')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="pamflet" class="col-sm-2 col-form-label">Pamflet</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="pamflet" name="pamflet">
+                                        <input type="file" class="form-control @error('pamflet') is-invalid @enderror"
+                                            id="pamflet" name="pamflet" value="{{ old('pamflet') }}">
+                                        @error('pamflet')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="modal-footer">

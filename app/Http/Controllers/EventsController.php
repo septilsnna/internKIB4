@@ -36,6 +36,31 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
+        $judul_ev = $request->old('judul_ev');
+        $jenis_ev = $request->old('jenis_ev');
+        $tanggal_ev = $request->old('tanggal_ev');
+        $waktu_ev = $request->old('waktu_ev');
+        $lokasi_ev = $request->old('lokasi_ev');
+        $biaya_ev = $request->old('biaya_ev');
+        $deskripsi = $request->old('deskripsi');
+        $pamflet = $request->old('pamflet');
+
+        // form validation
+        $request->validate([
+            'judul_ev' => 'required|unique:events,judul_ev',
+            'jenis_ev' => 'required',
+            'tanggal_ev' => 'required|date|after:today',
+            'waktu_ev' => 'required',
+            'lokasi_ev' => 'required',
+            'biaya_ev' => 'required|min:0',
+            'deskripsi' => 'required',
+            'pamflet' => 'required',
+        ]);
+
+        // saving pamflet
+        $filename = time();
+        $file = $request->pamflet->storeAs('/public/events', $filename);
+
         $events = new Event;
         $events->judul_ev = $request->judul_ev;
         $events->jenis_ev = $request->jenis_ev;
@@ -44,7 +69,7 @@ class EventsController extends Controller
         $events->lokasi_ev = $request->lokasi_ev;
         $events->biaya_ev = $request->biaya_ev;
         $events->deskripsi = $request->deskripsi;
-        $events->pamflet = $request->pamflet;
+        $events->pamflet = $filename;
 
         $events->save();
 
@@ -111,5 +136,18 @@ class EventsController extends Controller
         $events->delete();
 
         return redirect('/admin/manage_events');
+    }
+
+    public function search_events()
+    {
+        $data = [
+            'events' => Event::all()
+        ];
+
+        if (session('auth')) {
+            $data['nama_user'] = session('name');
+        }
+
+        return view('guests.search_events', $data);
     }
 }

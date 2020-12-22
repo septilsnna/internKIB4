@@ -47,8 +47,6 @@ class CollegesController extends Controller
         $deskripsi = $request->old('deskripsi');
         $gambar = $request->old('gambar');
 
-        // session()->flash('invalid_create', "Gagal menambahkan data, harap periksa kembali!");
-
         // form validation
         $request->validate([
             'nama_univ' => 'required|unique:colleges,nama_univ',

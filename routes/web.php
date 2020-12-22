@@ -62,7 +62,7 @@ Route::get('/admin/update_colleges/{id}', [CollegesController::class, 'update'])
 Route::get('/admin/delete_colleges/{id}', [CollegesController::class, 'destroy']);          // done
 
 Route::get('/admin/manage_events', [EventsController::class, 'index']);                     // done
-Route::get('/admin/add_events', [EventsController::class, 'store']);                        // done
+Route::post('/admin/add_events', [EventsController::class, 'store']);                       // done
 Route::get('/admin/update_events/{id}', [EventsController::class, 'update']);               // done
 Route::get('/admin/delete_events/{id}', [EventsController::class, 'destroy']);              // done
 

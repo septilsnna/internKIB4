@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\College;
+use App\Models\Event;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -12,6 +13,7 @@ class HomeController extends Controller
     {
         $data = [
             'kampus' => College::where('akre_univ', 'A')->take(3)->get(),
+            'events' => Event::take(2)->get(),
             'jml_kampus' => count(College::all())
         ];
 
