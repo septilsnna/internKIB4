@@ -47,7 +47,7 @@ class HomeController extends Controller
     public function profile()
     {
         $users = User::where('email', session('auth'))->get();
-        $nama = session('name');
-        return view('users/profile', ['users' => $users[0], 'nama' => $nama]);
+        $nama_user = session('name');
+        return view('users/profile', ['users' => $users[0], 'nama_user' => $nama_user]);
     }
 }

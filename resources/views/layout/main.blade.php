@@ -36,11 +36,14 @@
                             Fitur
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" style="color: #163254;" href="/colleges">Cari Kampus/Prodi</a>
-                            <a class="dropdown-item" style="color: #163254;" href="#">Cari Seminar/Workshop</a>
-                            <a class="dropdown-item" style="color: #163254;" href="#">Cari Beasiswa</a>
-                            <a class="dropdown-item" style="color: #163254;" href="#">Cari Lomba</a>
-                            <a class="dropdown-item" style="color: #163254;" href="#">Cari Lowongan</a>
+                            <a class="dropdown-item" style="color: #163254;" href="/search/colleges">Cari
+                                Kampus/Prodi</a>
+                            <a class="dropdown-item" style="color: #163254;" href="/search/events">Cari
+                                Seminar/Workshop</a>
+                            <a class="dropdown-item" style="color: #163254;" href="/search/scholarships">Cari
+                                Beasiswa</a>
+                            <a class="dropdown-item" style="color: #163254;" href="/search/competitions">Cari Lomba</a>
+                            <a class="dropdown-item" style="color: #163254;" href="/search/vacancies">Cari Lowongan</a>
                             <a class="dropdown-item" style="color: #163254;" href="#">UTBK</a>
                         </div>
                     </li>

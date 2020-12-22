@@ -90,7 +90,15 @@ class CollegesController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'kampus' => College::where('prov_univ', $id)->get()
+        ];
+
+        if (session('auth')) {
+            $data['nama_user'] = session('name');
+        }
+
+        return view('guests.collegesbyloc', $data);
     }
 
     /**
@@ -142,5 +150,18 @@ class CollegesController extends Controller
         $college->delete();
 
         return redirect('/admin/manage_colleges');
+    }
+
+    public function search_colleges()
+    {
+        $data = [
+            'kampus' => College::all()
+        ];
+
+        if (session('auth')) {
+            $data['nama_user'] = session('name');
+        }
+
+        return view('guests.search_colleges', $data);
     }
 }

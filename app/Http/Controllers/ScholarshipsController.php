@@ -105,4 +105,17 @@ class ScholarshipsController extends Controller
 
         return redirect('/admin/manage_scholarships');
     }
+
+    public function search_scholarships()
+    {
+        $data = [
+            'beasiswa' => Scholarship::all()
+        ];
+
+        if (session('auth')) {
+            $data['nama_user'] = session('name');
+        }
+
+        return view('guests.search_scholarships', $data);
+    }
 }

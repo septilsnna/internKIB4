@@ -27,29 +27,37 @@ use App\Http\Controllers\VacanciesController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);                  // done
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/colleges', [CollegesController::class, 'index']);
 
 // route for login
-Route::get('/login', [HomeController::class, 'login']);
-Route::get('/login/auth', [UsersController::class, 'show']);
+Route::get('/login', [HomeController::class, 'login']);             // done
+Route::get('/login/auth', [UsersController::class, 'show']);        // done
 
 // route for logout
-Route::get('/logout', [HomeController::class, 'logout']);
+Route::get('/logout', [HomeController::class, 'logout']);           // done
 
 // route for register
-Route::get('/register', [HomeController::class, 'register']);
-Route::get('/user/create', [UsersController::class, 'store']);
+Route::get('/register', [HomeController::class, 'register']);       // done
+Route::get('/user/create', [UsersController::class, 'store']);      // done
 
 // route for user profile
-Route::get('/profile', [HomeController::class, 'profile']);
+Route::get('/profile', [HomeController::class, 'profile']);         // done
+
+// route for searchs
+Route::get('/search/colleges', [CollegesController::class, 'search_colleges']);
+Route::get('/search/colleges/{id}', [CollegesController::class, 'show']);
+Route::get('/search/events', [EventsController::class, 'search_events']);
+Route::get('/search/scholarships', [ScholarshipsController::class, 'search_scholarships']);
+Route::get('/search/competitions', [CompetitionsController::class, 'search_competitions']);
+Route::get('/search/vacancies', [VacanciesController::class, 'search_vacancies']);
 
 // route for admin
 Route::get('/admin/dashboard', [AdminController::class, 'index']);
 
 Route::get('/admin/manage_colleges', [CollegesController::class, 'index']);                 // done
-Route::post('/admin/add_colleges', [CollegesController::class, 'store']);                    // done
+Route::post('/admin/add_colleges', [CollegesController::class, 'store']);                   // done
 Route::get('/admin/update_colleges/{id}', [CollegesController::class, 'update']);           // done
 Route::get('/admin/delete_colleges/{id}', [CollegesController::class, 'destroy']);          // done
 

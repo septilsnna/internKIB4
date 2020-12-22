@@ -171,7 +171,7 @@
     <div class="row">
         <div class="col-md-3 mt-3">
             <div class="container">
-                <a href="" class="py-4 px-4"
+                <a href="/search/colleges/jakarta" class="py-4 px-4"
                     style="font-size:24px; color: #163254; position: absolute; z-index: 2;">Jakarta</a>
                 <div style="display: inline-block; position: relative; z-index: 1;">
                     <img style="width: 100%; border-radius: 5px;" src="{{ url('/storage/city/jakarta1.jpg') }}">
@@ -180,7 +180,7 @@
         </div>
         <div class="col-md-3 mt-3">
             <div class="container">
-                <a href="" class="py-4 px-4"
+                <a href="/search/colleges/surabaya" class="py-4 px-4"
                     style="font-size:24px; color: #163254; position: absolute; z-index: 2;">Surabaya</a>
                 <div style="display: inline-block; position: relative; z-index: 1;">
                     <img style="width: 100%; border-radius: 5px;" src="{{ url('/storage/city/surabaya.jpg') }}">
@@ -189,7 +189,7 @@
         </div>
         <div class="col-md-3 mt-3">
             <div class="container">
-                <a href="" class="py-4 px-4"
+                <a href="/search/colleges/yogyakarta" class="py-4 px-4"
                     style="font-size:24px; color: #163254; position: absolute; z-index: 2;">Yogyakarta</a>
                 <div style="display: inline-block; position: relative; z-index: 1;">
                     <img style="width: 100%; border-radius: 5px;" src="{{ url('/storage/city/yogyakarta.jpg') }}">
@@ -198,7 +198,7 @@
         </div>
         <div class="col-md-3 mt-3">
             <div class="container">
-                <a href="" class="py-4 px-4"
+                <a href="/search/colleges/bandung" class="py-4 px-4"
                     style="font-size:24px; color: #163254; position: absolute; z-index: 2;">Bandung</a>
                 <div style="display: inline-block; position: relative; z-index: 1;">
                     <img style="width: 100%; border-radius: 5px;" src="{{ url('/storage/city/bandung1.jpg') }}">
@@ -207,7 +207,7 @@
         </div>
         <div class="col-md-3 mt-3">
             <div class="container">
-                <a href="" class="py-4 px-4"
+                <a href="/search/colleges/medan" class="py-4 px-4"
                     style="font-size:24px; color: #163254; position: absolute; z-index: 2;">Medan</a>
                 <div style="display: inline-block; position: relative; z-index: 1;">
                     <img style="width: 100%; border-radius: 5px;" src="{{ url('/storage/city/medan.jpg') }}">
@@ -216,7 +216,7 @@
         </div>
         <div class="col-md-3 mt-3">
             <div class="container">
-                <a href="" class="py-4 px-4"
+                <a href="/search/colleges/semarang" class="py-4 px-4"
                     style="font-size:24px; color: #163254; position: absolute; z-index: 2;">Semarang</a>
                 <div style="display: inline-block; position: relative; z-index: 1;">
                     <img style="width: 100%; border-radius: 5px;" src="{{ url('/storage/city/semarang.jpg') }}">
@@ -225,7 +225,7 @@
         </div>
         <div class="col-md-3 mt-3">
             <div class="container">
-                <a href="" class="py-4 px-4"
+                <a href="/search/colleges/malang" class="py-4 px-4"
                     style="font-size:24px; color: #163254; position: absolute; z-index: 2;">Malang</a>
                 <div style="display: inline-block; position: relative; z-index: 1;">
                     <img style="width: 100%; border-radius: 5px;" src="{{ url('/storage/city/malang.jpg') }}">
@@ -234,7 +234,7 @@
         </div>
         <div class="col-md-3 mt-3">
             <div class="container">
-                <a href="" class="py-4 px-4"
+                <a href="/search/colleges/bali" class="py-4 px-4"
                     style="font-size:24px; color: #163254; position: absolute; z-index: 2;">Bali</a>
                 <div style="display: inline-block; position: relative; z-index: 1;">
                     <img style="width: 100%; border-radius: 5px;" src="{{ url('/storage/city/bali.jpg') }}">
