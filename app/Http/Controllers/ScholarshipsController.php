@@ -37,12 +37,31 @@ class ScholarshipsController extends Controller
      */
     public function store(Request $request)
     {
+        $nama_bea = $request->old('nama_bea');
+        $penyelenggara_bea = $request->old('penyelenggara_bea');
+        $batas_submit = $request->old('batas_submit');
+        $deskripsi = $request->old('deskripsi');
+        // $pamflet = $request->old('pamflet');
+
+        // form validation
+        $request->validate([
+            'nama_bea' => 'required|unique:colleges,nama_univ',
+            'penyelenggara_bea' => 'required',
+            'batas_submit' => 'required|date|after:today',
+            'deskripsi' => 'required',
+            // 'pamflet' => 'required',
+        ]);
+
+        // saving pamflet
+        // $filename = time();
+        // $file = $request->pamflet->storeAs('/public/scholarships', $filename);
+
         $scholars = new Scholarship;
         $scholars->nama_bea = $request->nama_bea;
         $scholars->penyelenggara_bea = $request->penyelenggara_bea;
         $scholars->batas_submit = $request->batas_submit;
         $scholars->deskripsi = $request->deskripsi;
-        $scholars->pamflet = $request->pamflet;
+        // $scholars->pamflet = $filename;
 
         $scholars->save();
 
