@@ -45,7 +45,7 @@ class ScholarshipsController extends Controller
 
         // form validation
         $request->validate([
-            'nama_bea' => 'required|unique:colleges,nama_univ',
+            'nama_bea' => 'required|unique:scholarships,nama_bea',
             'penyelenggara_bea' => 'required',
             'batas_submit' => 'required|date|after:today',
             'deskripsi' => 'required',
@@ -133,6 +133,7 @@ class ScholarshipsController extends Controller
 
         if (session('auth')) {
             $data['nama_user'] = session('name');
+            return view('users.search_scholarships', $data);
         }
 
         return view('guests.search_scholarships', $data);

@@ -146,6 +146,7 @@ class EventsController extends Controller
 
         if (session('auth')) {
             $data['nama_user'] = session('name');
+            return view('users.search_events', $data);
         }
 
         return view('guests.search_events', $data);

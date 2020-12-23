@@ -37,13 +37,31 @@ class CompetitionsController extends Controller
      */
     public function store(Request $request)
     {
-        $comps = new Competition;
+        $judul_lom = $request->old('judul_lom');
+        $penyelenggara_lom = $request->old('penyelenggara_lom');
+        $batas_submit = $request->old('batas_submit');
+        $deskripsi = $request->old('deskripsi');
+        $pamflet = $request->old('pamflet');
 
+        // form validation
+        $request->validate([
+            'judul_lom' => 'required|unique:competitions,judul_lom',
+            'penyelenggara_lom' => 'required',
+            'batas_submit' => 'required|date|after:today',
+            'deskripsi' => 'required',
+            'pamflet' => 'required',
+        ]);
+
+        // saving pamflet
+        $filename = time();
+        $file = $request->pamflet->storeAs('/public/competitions', $filename);
+
+        $comps = new Competition;
         $comps->judul_lom = $request->judul_lom;
         $comps->penyelenggara_lom = $request->penyelenggara_lom;
         $comps->batas_submit = $request->batas_submit;
         $comps->deskripsi = $request->deskripsi;
-        $comps->pamflet = $request->pamflet;
+        $comps->pamflet = $filename;
 
         $comps->save();
 
@@ -105,5 +123,19 @@ class CompetitionsController extends Controller
         Competition::where('id', $id)->delete();
 
         return redirect('/admin/manage_competitions');
+    }
+
+    public function search_competitions()
+    {
+        $data = [
+            'lomba' => Competition::all()
+        ];
+
+        if (session('auth')) {
+            $data['nama_user'] = session('name');
+            return view('users.search_competitions', $data);
+        }
+
+        return view('guests.search_competitions', $data);
     }
 }

@@ -49,7 +49,7 @@ Route::get('/profile', [HomeController::class, 'profile']);         // done
 Route::get('/search/colleges', [CollegesController::class, 'search_colleges']);             // done
 Route::get('/search/colleges/{id}', [CollegesController::class, 'show']);                   // done
 Route::get('/search/events', [EventsController::class, 'search_events']);                   // done
-Route::get('/search/scholarships', [ScholarshipsController::class, 'search_scholarships']);
+Route::get('/search/scholarships', [ScholarshipsController::class, 'search_scholarships']); // done
 Route::get('/search/competitions', [CompetitionsController::class, 'search_competitions']);
 Route::get('/search/vacancies', [VacanciesController::class, 'search_vacancies']);
 
@@ -72,7 +72,7 @@ Route::get('/admin/update_scholarships/{id}', [ScholarshipsController::class, 'u
 Route::get('/admin/delete_scholarships/{id}', [ScholarshipsController::class, 'destroy']);  // done
 
 Route::get('/admin/manage_competitions', [CompetitionsController::class, 'index']);         // done
-Route::get('/admin/add_competitions', [CompetitionsController::class, 'store']);            // done
+Route::post('/admin/add_competitions', [CompetitionsController::class, 'store']);            // done
 Route::get('/admin/update_competitions/{id}', [CompetitionsController::class, 'update']);   // done
 Route::get('/admin/delete_competitions/{id}', [CompetitionsController::class, 'destroy']);  // done
 

@@ -1,22 +1,21 @@
-@extends('layout/main')
+@extends('layout/user_mode')
 
 @section('title', 'Kampus Indonesia')
 
 @section('container')
 <div class="container my-4" style="font-size: 20px; font-family: 'Quicksand', sans-serif; color: #163254;">
     <div class="row">
-        @foreach($beasiswa as $d)
-        <div class="col-md-4 mt-3">
-            <div class="card" style="border-radius: 10px; border-color:#163254">
-                <img src="{{ url('/storage/scholarships/'.$d->pamflet) }}" class="card-img-top pt-2 align-self-center"
+        @foreach($kampus as $d)
+        <div class="col-md-4 mt-4">
+            <div class="card shadow" style="height: 320px; border-radius: 10px; border-color:#163254">
+                <img src="{{ url('/storage/logos/'.$d->gambar) }}" class="card-img-top pt-2 align-self-center"
                     style="max-width: 40%;" alt="">
                 <div class="card-body">
                     <p class="card-title" style="font-size: 18px;">
-                        {{$d->nama_bea}}
-                        <br><small class="card-text" style="color: gray;">Penyelenggara:
-                            {{ $d->penyelenggara_bea }}</small>
-                        <br><small class="card-text" style="color: gray;">Deadline: {{ $d->batas_submit }}</small>
+                        {{$d->nama_univ}}
                     </p>
+                    <p><small class="card-text" style="color: gray;">Akreditasi:</small>
+                        {{$d->akre_univ}}</p>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-block" style="background-color: #163254; color:#dbdddf"
                         data-toggle="modal" data-target="#info{{ $d->id }}Modal">
@@ -31,27 +30,42 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="info{{ $d->id }}ModalTitle">
-                                        {{ $d->nama_bea}}</h5>
+                                        {{ $d->nama_univ}}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{ url('/storage/scholarships/'.$d->pamflet) }}" class="ml-5 py-2"
+                                    <img src="{{ url('/storage/logos/'.$d->gambar) }}" class="ml-5 py-2"
                                         style="max-width: 40%;" alt="">
                                     <div class="row my-3 mx-1">
                                         <table class="table table-hover">
                                             <tbody>
                                                 <tr>
                                                     <td style="font-size: 16px; color:gray">
-                                                        Penyelenggara</td>
-                                                    <td>{{ $d->penyelenggara_bea}}
+                                                        Akreditasi</td>
+                                                    <td>{{ $d->akre_univ }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-size: 16px; color:gray">
+                                                        Status Kampus</td>
+                                                    <td>{{ $d->jenis_univ }} {{ $d->status_univ }}
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="font-size: 16px; color:gray">
-                                                        Batas Submit</td>
-                                                    <td>{{ $d->batas_submit}}</td>
+                                                        Jumlah Fakultas</td>
+                                                    <td>{{ $d->jml_fak }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-size: 16px; color:gray">
+                                                        Jumlah Prodi</td>
+                                                    <td>{{ $d->jml_prodi }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-size: 16px; color:gray">
+                                                        Lokasi</td>
+                                                    <td>{{ $d->prov_univ }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

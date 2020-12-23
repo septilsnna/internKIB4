@@ -1,20 +1,20 @@
-@extends('layout/main')
+@extends('layout/user_mode')
 
 @section('title', 'Kampus Indonesia')
 
 @section('container')
 <div class="container my-4" style="font-size: 20px; font-family: 'Quicksand', sans-serif; color: #163254;">
-    <div class="row">
-        @foreach($beasiswa as $d)
-        <div class="col-md-4 mt-3">
+    <div class="pt-3" style="columns: 3; column-gap: 16px;">
+        @foreach($lomba as $d)
+        <div style="display: inline-block; position: relative; margin-bottom: 16px;">
             <div class="card" style="border-radius: 10px; border-color:#163254">
-                <img src="{{ url('/storage/scholarships/'.$d->pamflet) }}" class="card-img-top pt-2 align-self-center"
-                    style="max-width: 40%;" alt="">
+                <img src="{{ url('/storage/competitions/'.$d->pamflet) }}" class="card-img-top align-self-center"
+                    alt="">
                 <div class="card-body">
                     <p class="card-title" style="font-size: 18px;">
-                        {{$d->nama_bea}}
+                        {{$d->judul_lom}}
                         <br><small class="card-text" style="color: gray;">Penyelenggara:
-                            {{ $d->penyelenggara_bea }}</small>
+                            {{ $d->penyelenggara_lom }}</small>
                         <br><small class="card-text" style="color: gray;">Deadline: {{ $d->batas_submit }}</small>
                     </p>
                     <!-- Button trigger modal -->
@@ -31,13 +31,13 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="info{{ $d->id }}ModalTitle">
-                                        {{ $d->nama_bea}}</h5>
+                                        {{ $d->judul_lom}}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{ url('/storage/scholarships/'.$d->pamflet) }}" class="ml-5 py-2"
+                                    <img src="{{ url('/storage/competitions/'.$d->pamflet) }}" class="ml-5 py-2"
                                         style="max-width: 40%;" alt="">
                                     <div class="row my-3 mx-1">
                                         <table class="table table-hover">
@@ -45,7 +45,7 @@
                                                 <tr>
                                                     <td style="font-size: 16px; color:gray">
                                                         Penyelenggara</td>
-                                                    <td>{{ $d->penyelenggara_bea}}
+                                                    <td>{{ $d->penyelenggara_lom}}
                                                     </td>
                                                 </tr>
                                                 <tr>

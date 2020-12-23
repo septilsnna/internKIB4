@@ -4,12 +4,11 @@
 
 @section('container')
 <div class="container my-4" style="font-size: 20px; font-family: 'Quicksand', sans-serif; color: #163254;">
-    <div class="row">
+    <div class="pt-3" style="columns: 2; column-gap: 16px;">
         @foreach($events as $d)
-        <div class="col-md mt-3">
-            <div class="card" style="height: 400px; border-radius: 10px; border-color:#163254">
-                <img src="{{ url('/storage/events/'.$d->pamflet) }}" class="card-img-top pt-2 align-self-center"
-                    style="max-width: 40%;" alt="">
+        <div style="display: inline-block; position: relative; margin-bottom: 16px;">
+            <div class="card" style="border-radius: 10px; border-color:#163254">
+                <img src="{{ url('/storage/events/'.$d->pamflet) }}" class="card-img-top pt-2 align-self-center" alt="">
                 <div class="card-body">
                     <p class="card-title" style="font-size: 18px;">
                         {{$d->judul_ev}}

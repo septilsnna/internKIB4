@@ -1,21 +1,19 @@
-@extends('layout/main')
+@extends('layout/user_mode')
 
 @section('title', 'Kampus Indonesia')
 
 @section('container')
 <div class="container my-4" style="font-size: 20px; font-family: 'Quicksand', sans-serif; color: #163254;">
-    <div class="row">
-        @foreach($beasiswa as $d)
-        <div class="col-md-4 mt-3">
+    <div class="pt-3" style="columns: 2; column-gap: 16px;">
+        @foreach($events as $d)
+        <div style="display: inline-block; position: relative; margin-bottom: 16px;">
             <div class="card" style="border-radius: 10px; border-color:#163254">
-                <img src="{{ url('/storage/scholarships/'.$d->pamflet) }}" class="card-img-top pt-2 align-self-center"
-                    style="max-width: 40%;" alt="">
+                <img src="{{ url('/storage/events/'.$d->pamflet) }}" class="card-img-top pt-2 align-self-center" alt="">
                 <div class="card-body">
                     <p class="card-title" style="font-size: 18px;">
-                        {{$d->nama_bea}}
-                        <br><small class="card-text" style="color: gray;">Penyelenggara:
-                            {{ $d->penyelenggara_bea }}</small>
-                        <br><small class="card-text" style="color: gray;">Deadline: {{ $d->batas_submit }}</small>
+                        {{$d->judul_ev}}
+                        <br><small class="card-text" style="color: gray;">{{ $d->tanggal_ev }}</small>
+                        <br><small class="card-text" style="color: gray;">{{ $d->lokasi_ev }}</small>
                     </p>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-block" style="background-color: #163254; color:#dbdddf"
@@ -31,27 +29,37 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="info{{ $d->id }}ModalTitle">
-                                        {{ $d->nama_bea}}</h5>
+                                        {{ $d->judul_ev}}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{ url('/storage/scholarships/'.$d->pamflet) }}" class="ml-5 py-2"
+                                    <img src="{{ url('/storage/events/'.$d->pamflet) }}" class="ml-5 py-2"
                                         style="max-width: 40%;" alt="">
                                     <div class="row my-3 mx-1">
                                         <table class="table table-hover">
                                             <tbody>
                                                 <tr>
                                                     <td style="font-size: 16px; color:gray">
-                                                        Penyelenggara</td>
-                                                    <td>{{ $d->penyelenggara_bea}}
+                                                        Jenis Acara</td>
+                                                    <td>{{ $d->jenis_ev}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-size: 16px; color:gray">
+                                                        Tanggal Acara</td>
+                                                    <td>{{ $d->tanggal_ev}}, {{ $d->waktu_ev}}
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="font-size: 16px; color:gray">
-                                                        Batas Submit</td>
-                                                    <td>{{ $d->batas_submit}}</td>
+                                                        Lokasi Acara</td>
+                                                    <td>{{ $d->lokasi_ev}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-size: 16px; color:gray">
+                                                        Biaya</td>
+                                                    <td>{{ $d->biaya_ev}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

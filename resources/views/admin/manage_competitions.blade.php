@@ -24,38 +24,60 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="/admin/add_competitions">
+                            <form action="/admin/add_competitions" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row align-items-center">
                                     <label for="judul_lom" class="col-sm-2 col-form-label">Judul Lomba</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="judul_lom" name="judul_lom"></input>
+                                        <input type="text" class="form-control @error('judul_lom') is-invalid @enderror"
+                                            id="judul_lom" name="judul_lom" value="{{ old('judul_lom') }}"></input>
+                                        @error('judul_lom')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="penyelenggara_lom" class="col-sm-2 col-form-label">Penyelenggara</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="penyelenggara_lom"
-                                            name="penyelenggara_lom"></input>
+                                        <input type="text"
+                                            class="form-control @error('penyelenggara_lom') is-invalid @enderror"
+                                            id="penyelenggara_lom" name="penyelenggara_lom"
+                                            value="{{ old('penyelenggara_lom') }}"></input>
+                                        @error('penyelenggara_lom')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="batas_submit" class="col-sm-2 col-form-label">Batas Pengumpulan</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="batas_submit"
-                                            name="batas_submit"></input>
+                                        <input type="date"
+                                            class="form-control @error('batas_submit') is-invalid @enderror"
+                                            id="batas_submit" name="batas_submit"
+                                            value="{{ old('batas_submit') }}"></input>
+                                        @error('batas_submit')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="deskripsi" name="deskripsi"></input>
+                                        <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
+                                            id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}"></input>
+                                        @error('deskripsi')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <label for="pamflet" class="col-sm-2 col-form-label">Pamflet</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="pamflet" name="pamflet"></input>
+                                        <input type="file" class="form-control @error('pamflet') is-invalid @enderror"
+                                            id="pamflet" name="pamflet">
+                                        @error('pamflet')
+                                        <small style="color: red;">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="modal-footer">

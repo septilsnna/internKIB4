@@ -6,9 +6,9 @@
 <div class="row mx-2 mt-4" style="font-size: 18px; font-family: 'Quicksand', sans-serif; color: #163254;">
     <div class="col-md-2">
         <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-dashboard-list" data-toggle="list"
-                href="#list-dashboard" role="tab" aria-controls="dashboard">Dashboard</a>
-            <a class="list-group-item list-group-item-action" id="list-database-list" data-toggle="list"
+            <!-- <a class="list-group-item list-group-item-action active" id="list-dashboard-list" data-toggle="list"
+                href="#list-dashboard" role="tab" aria-controls="dashboard">Dashboard</a> -->
+            <a class="list-group-item list-group-item-action active" id="list-database-list" data-toggle="list"
                 href="#list-database" role="tab" aria-controls="database">Databases</a>
             <a class="list-group-item list-group-item-action" id="list-users-list" data-toggle="list" href="#list-users"
                 role="tab" aria-controls="users">Users</a>
@@ -18,7 +18,7 @@
     </div>
     <div class="col-md-10">
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="list-dashboard" role="tabpanel"
+            <!-- <div class="tab-pane fade show active" id="list-dashboard" role="tabpanel"
                 aria-labelledby="list-dashboard-list">
                 <div class="row justify-content-between">
                     <div class="col-md-4">
@@ -53,8 +53,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="tab-pane fade" id="list-database" role="tabpanel" aria-labelledby="list-database-list">
+            </div> -->
+            <div class="tab-pane fade show active" id="list-database" role="tabpanel"
+                aria-labelledby="list-database-list">
                 <h2>Databases</h2>
                 <div class="row justify-content-center">
                     <div class="col-md-6 my-3">
